@@ -196,7 +196,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## GitHub Tip <span class="title-inverted">#1</span>
+                            ## GitHub Tip <span class="title-inverted">#2</span>
                         </script>
                     </section>
                     <section data-markdown>
@@ -341,6 +341,46 @@
 
                             <br>
                             <i class="fa fa-link"></i> [hub.github.com](https://hub.github.com/)
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Useful Git Commands
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Go Back
+                            <br>
+
+                            ``` bash
+                            git checkout -
+                            Switched to branch 'master'
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### (Un)Merged Branch
+                            <br>
+
+                            ``` bash
+                            git branch --no-merged
+                              develop
+                              feat-another-feature
+                              feat-my-feature
+                              fix-undefined-variable
+                            ```
+
+                            <br>
+
+                            ``` bash
+                            git branch --merged
+                            * master
+                            ```
                         </script>
                     </section>
                 </section>
