@@ -38,7 +38,31 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## <i class="fa fa-github"></i> GitHub
+                            ## Open Source
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            In production and development, Open Source as a development model promotes a **universal
+                            access** via a **free license** to a product's design or blueprint [...].
+
+                            <br>
+                            <small>
+                                [http://en.wikipedia.org/wiki/Open_source](http://en.wikipedia.org/wiki/Open_source)
+                            <small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Open-source software is very often developed<br>in a **public**, **collaborative** manner.
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## <i class="title-inverted fa fa-github"></i> GitHub
                         </script>
                     </section>
                     <section>
@@ -55,6 +79,22 @@
                             <br>
 
                             ![](images/issues.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Integrated Issue Tracking
+                            <br>
+
+                            ![](images/issue-view.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Syntax Highlighting
+                            <br>
+
+                            ![](images/issue-code.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -112,6 +152,158 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## How To Contribute?
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Everyone can contribute.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Fork The Repository
+
+                            ![](images/fork.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Create A Branch
+                            <br>
+
+                            ``` bash
+                            git checkout -b feature-branch
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Eat, Sleep, Code, Repeat.
+                            <br>
+
+                            ![](images/programming.jpg)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Submit A Pull Request
+
+                            <p class="fragment"><br>But, **how?**</p>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Look At The `CONTRIBUTING` File
+
+                            <br>
+                            _(If it does not exist, contribute by adding it!)_
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Write Good Commit Messages
+                            <br>
+
+                            ```
+                            Capitalized, short (50 chars or less) summary
+
+                            More detailed explanatory text, if necessary.  Wrap it to about 72
+                            characters or so.  In some contexts, the first line is treated as the
+                            subject of an email and the rest of the text as the body.  The blank
+                            line separating the summary from the body is critical (unless you omit
+                            the body entirely); tools like rebase can get confused if you run the
+                            two together.
+
+                            Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+                            or "Fixes bug."  This convention matches up with commit messages generated
+                            by commands like git merge and git revert.
+
+                            Further paragraphs come after blank lines.
+                            ```
+
+                            <br>
+                            <i class="fa fa-link"></i> [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Rebase Your Branch
+
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Squash Your Commits
+
+                            ``` bash
+                            git rebase -i HEAD~2
+                            ```
+
+                            ``` bash
+                            pick 5335450 add test
+                            pick 4c20f8d Fix undefined variable
+
+                            # Rebase 35124cb..4c20f8d onto 35124cb
+                            #
+                            # Commands:
+                            #  p, pick = use commit
+                            #  r, reword = use commit, but edit the commit message
+                            #  e, edit = use commit, but stop for amending
+                            #  s, squash = use commit, but meld into previous commit
+                            #  f, fixup = like "squash", but discard this commit's log message
+                            #  x, exec = run command (the rest of the line) using shell
+                            #
+                            # These lines can be re-ordered; they are executed from top to bottom.
+                            #
+                            # If you remove a line here THAT COMMIT WILL BE LOST.
+                            #
+                            # However, if you remove everything, the rebase will be aborted.
+                            #
+                            # Note that empty commits are commented out
+                            ```
+
+                            <small>
+                                <i class="fa fa-link"></i> [Squashing commits with rebase](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Push & Create
+                            <br>
+
+                            ![](images/recently_pushed_branch.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Profit!
+                            <br>
+
+                            ![](images/carlton.gif)
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## What Happens Then?
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            An Open Source **maintainer** will look at your work.
+
+                            <p class="fragment"><br>But, **how?**</p>
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## PATCH <span class="title-inverted">&</span> DIFF
                         </script>
                     </section>
@@ -150,7 +342,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### What Changes?
+                            ### Changes Overview
                             <br>
 
                             ```
@@ -165,7 +357,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Test It!
+                            ### Test The Patch
                             <br>
 
                             ```
@@ -178,7 +370,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Apply
+                            ### Then, Apply
                             <br>
 
                             ``` bash
@@ -200,7 +392,7 @@
                             ```
 
                             <br>
-                            `patch -p1` works too!
+                            BTW, `patch -p1` works too!
                         </script>
                     </section>
                     <section data-markdown>
@@ -226,7 +418,7 @@
                             <bR>
 
                             ``` bash
-                            $ curl https://github.com/your/repo/commit/<SHA>.patch |git am
+                            curl https://github.com/your/repo/commit/<SHA>.patch |git am
                             Applying: Fix undefined variable
                             ```
                         </script>
@@ -357,7 +549,62 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Useful Git Commands
+                            ## Bonus: (My) Useful<br>Git Commands
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Atomic Commits
+
+                            ``` bash
+                            git add -p
+                            ```
+
+                            ``` diff
+diff --git a/test.js b/test.js
+index 60ac996..2a57310 100644
+--- a/test.js
++++ b/test.js
+@@ -1,6 +1,5 @@
+ (function () {
+-    var i, j;
++    var i = 0, j;
+
+-    i = 0;
+-    j = i;
++    j = 1;
+ })();
+Stage this hunk [y,n,q,a,d,/,s,e,?]? s
+Split into 2 hunks.
+@@ -1,3 +1,3 @@
+ (function () {
+-    var i, j;
++    var i = 0, j;
+
+Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Amending A Commit
+                            <br>
+
+                            ``` bash
+                            git commit --amend -m 'Fix undefined variable j
+
+                            Fix #123'
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Fast Pull & Rebase
+                            <br>
+
+                            ``` bash
+                            git pull --rebase origin master
+                            ```
                         </script>
                     </section>
                     <section data-markdown>
@@ -368,6 +615,11 @@
                             ``` bash
                             git checkout -
                             Switched to branch 'master'
+                            ```
+
+                            ``` bash
+                            git checkout -
+                            Switched to branch 'feat-undefined-variable'
                             ```
                         </script>
                     </section>
@@ -390,14 +642,6 @@
                             git branch --merged
                             * master
                             ```
-                        </script>
-                    </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Open Source
                         </script>
                     </section>
                 </section>
@@ -425,6 +669,20 @@
                     </script>
                 </section>
 
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Links
+
+                        <small>
+
+                        * http://williamdurand.fr/2013/11/20/on-creating-pull-requests/
+                        * http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
+                        * http://git-scm.com/book/en/v2/Git-Branching-Rebasing
+                        * http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+
+                        </small>
+                    </script>
+                </section>
             </div>
         </div>
         <script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
