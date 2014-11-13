@@ -223,7 +223,9 @@
                             ```
 
                             <br>
-                            <i class="fa fa-link"></i> [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+                            <small>
+                                <i class="fa fa-link"></i> [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+                            </small>
                         </script>
                     </section>
                     <section data-markdown>
@@ -295,8 +297,22 @@
                     <section data-markdown>
                         <script type="text/template">
                             An Open Source **maintainer** will look at your work.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Pull Request Review
+                            <br>
 
-                            <p class="fragment"><br>But, **how?**</p>
+                            * Understand the goal of the PR
+                            * Try to reproduce the issue
+                            * Try the fix
+                            * Test the new feature
+                            * Think about edge cases
+                            * Write documentation if not provided
+
+                            <br>
+                            ![](images/merge-button.png)
                         </script>
                     </section>
                 </section>
@@ -304,7 +320,168 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## PATCH <span class="title-inverted">&</span> DIFF
+                            ## Dealing With Releases
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Semantic Versioning
+
+                            <br>
+                            <small>
+                                <i class="fa fa-link"></i> [semver.org](http://semver.org/)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Changelog
+                            <br>
+
+                            A change log is a file which contains a curated,
+                            ordered list of notable changes for each version of
+                            a project.
+
+                            <br>
+                            <small>
+                                <i class="fa fa-link"></i> [keepachangelog.com](http://keepachangelog.com/)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Release Process
+                            <br>
+
+                            1. Run test suite(s)
+                            1. Update documentation, changelog, version
+                            1. `git commit -m "Prepare X.Y.Z release"`
+                            1. `git tag` **`v`**`X.Y.Z`
+                            1. Build artifact (`gem build`, etc.)
+                            1. Update version number (`Z++`)
+                            1. `git commit -m "Bump version to X.Y.Z+1"`
+                            1. `git push origin master --tag`
+                            1. Publish artifact (`gem push`, etc.)
+                            1. Publish a GitHub release
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## `hub`
+
+                            git + hub = github
+
+                            <br>
+                            `alias git=hub`
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Clone
+                            <br>
+
+                            ``` bash
+                            git clone random/repo
+                            # git clone git://github.com/random/repo.git
+                            ```
+
+                            ``` bash
+                            git clone repo
+                            # git clone git://github.com/YOUR/repo.git
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Browse
+                            <br>
+
+                            ``` bash
+                            git browse
+                            # open https://github.com/random/repo
+                            ```
+
+                            ``` bash
+                            git browse -- issues
+                            # open https://github.com/random/repo/issues
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Easy Fetch
+                            <br>
+
+                            ``` bash
+                            git fetch ubermuda
+                            # git remote add ubermuda git://github.com/ubermuda/repo.git
+                            # git fetch ubermuda
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Checkout <i class="fa fa-heart"></i>
+                            <br>
+
+                            ``` bash
+                            git checkout https://github.com/your/repo/pull/123
+                            # git remote add contributor git://github.com/contributor/repo.git
+                            # git fetch contributor
+                            # git checkout -b contributor-branch contributor/branch
+                            ```
+
+                            <br>
+                            Best way to [work on|review|test] a Pull Request so far!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Apply Commits
+                            <br>
+
+                            ``` bash
+                            git am -3 https://github.com/your/repo/pull/123
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Cherry-Pick
+                            <br>
+
+                            ``` bash
+                            git cherry-pick https://github.com/random/repo/commit/SHA
+                            # git remote random git://github.com/random/repo.git
+                            # git fetch random
+                            # git cherry-pick SHA
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### More!
+                            <br>
+
+                            ``` bash
+                            git fork, git pull-request, merge, ci-status, etc.
+                            ```
+
+                            <br>
+                            <small>
+                                <i class="fa fa-link"></i> [hub.github.com](https://hub.github.com/)
+                            </small>
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Dealing With<br>PATCH <span class="title-inverted">&</span> DIFF
                         </script>
                     </section>
                     <section data-markdown>
@@ -440,108 +617,75 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## `hub`
-
-                            git + hub = github
-
-                            <br>
-                            `alias git=hub`
+                            ## Dealing With<br>Everything Else
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Clone
+                            ### Fixing The Code Is Not Enough
                             <br>
 
-                            ``` bash
-                            git clone random/repo
-                            # git clone git://github.com/random/repo.git
-                            ```
-
-                            ``` bash
-                            git clone repo
-                            # git clone git://github.com/YOUR/repo.git
-                            ```
+                            ![](images/tweet-lukas.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Browse
+                            ### Full-Time Hobby
                             <br>
 
-                            ``` bash
-                            git browse
-                            # open https://github.com/random/repo
-                            ```
+                            ![](images/tweet-mike.png)
+                        </script>
+                    </section>
+                    <section data-background="images/plus-one.png">
+                        <h3>Just do it.</h2>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Provide Support
 
-                            ``` bash
-                            git browse -- issues
-                            # open https://github.com/random/repo/issues
-                            ```
+                            ![](images/support-email-1.png)
+                        </script>
+                    </section>
+                    <section>
+                        <h3>... Everywhere</h3>
+                        <img src="images/support-twitter-1.png" />
+                        <img src="images/support-twitter-2.png" />
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Create Things That People Actually Use (<span class="title-inverted">&</span> Like)
+
+                            ![](images/thanks-geocoder.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Easy Fetch
+                            ### Inspire Others
                             <br>
 
-                            ``` bash
-                            git fetch ubermuda
-                            # git remote add ubermuda git://github.com/ubermuda/repo.git
-                            # git fetch ubermuda
-                            ```
+                            ![](images/thanks-credits.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Checkout <i class="fa fa-heart"></i>
-                            <br>
+                            ### Makes People Feel Good
 
-                            ``` bash
-                            git checkout https://github.com/your/repo/pull/123
-                            # git remote add contributor git://github.com/contributor/repo.git
-                            # git fetch contributor
-                            # git checkout -b contributor-branch contributor/branch
-                            ```
-
-                            <br>
-                            Best way to [work on|review|test] a Pull Request so far!
+                            ![](images/feel-good.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Apply Commits
+                            ### Receive Overwhelming Feedback
                             <br>
 
-                            ``` bash
-                            git am -3 https://github.com/your/repo/pull/123
-                            ```
+                            ![](images/thanks-email.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Cherry-Pick
-                            <br>
+                            ### ... <span class="title-inverted">&</span> Gifts <i class="fa fa-heart"></i>
 
-                            ``` bash
-                            git cherry-pick https://github.com/random/repo/commit/SHA
-                            # git remote random git://github.com/random/repo.git
-                            # git fetch random
-                            # git cherry-pick SHA
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### More!
-                            <br>
-
-                            ``` bash
-                            git fork, git pull-request, merge, ci-status, etc.
-                            ```
-
-                            <br>
-                            <i class="fa fa-link"></i> [hub.github.com](https://hub.github.com/)
+                            ![](images/gifts.jpg)
                         </script>
                     </section>
                 </section>
