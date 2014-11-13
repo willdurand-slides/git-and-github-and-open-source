@@ -38,11 +38,312 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Title
+                            ## GitHub
+                        </script>
+                    </section>
+                    <section>
+                        <img src="images/github.png" class="no-border" />
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            GitHub is the largest code host on the planet<br>with over **17.1 million** repositories.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Integrated Issue Tracking
+                            <br>
+
+                            ![](images/issues.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Collaborative Code Review
+
+                            ![](images/pr.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Pull Request = Code + Issue + Code Comments
+                        </script>
+                    </section>
+                    <section>
+                        <img src="images/pages.png" class="no-border" />
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Release Management
+
+                            ![](images/release.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Compare View
+
+                            ![](images/compare.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## GitHub Tip <span class="title-inverted">#1</span>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `t` File Finder
+
+                            ![](images/filefinder.png)
                         </script>
                     </section>
                 </section>
-            </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## PATCH <span class="title-inverted">&</span> DIFF
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Creating A Patch
+
+                            ```
+                            git format-patch master --stdout > fix-undefined-variable.patch
+                            ```
+
+                            ```
+                            From: William Durand <william.durand1@gmail.com>
+                            Date: Thu, 13 Nov 2014 10:22:17 +0100
+                            Subject: [PATCH] Fix undefined variable
+
+                            ---
+                             test.js | 2 +-
+                             1 file changed, 1 insertion(+), 1 deletion(-)
+
+                            diff --git a/test.js b/test.js
+                            index 760e4eb..60ac996 100644
+                            --- a/test.js
+                            +++ b/test.js
+                            @@ -1,5 +1,5 @@
+                             (function () {
+                            -    var i;
+                            +    var i, j;
+
+                            i = 0;
+                            j = i;
+                            --
+                            2.1.2
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### What Changes?
+                            <br>
+
+                            ```
+                            git apply --stat fix-undefined-variable.patch
+                            ```
+
+                            ```
+                             test.js |    2 +-
+                             1 file changed, 1 insertion(+), 1 deletion(-)
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Test It!
+                            <br>
+
+                            ```
+                            git apply --check fix-undefined-variable.patch
+                            ```
+
+                            <br>
+                            No output == <i class="fa fa-thumbs-o-up"></i>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Apply
+                            <br>
+
+                            ``` bash
+                            git am --signoff < fix-undefined-variable.patch
+                            ```
+
+                            ``` bash
+                            Applying: Fix undefined variable
+                            ```
+
+                            ``` bash
+                            commit 4c20f8d517b99638f5379f3f0894ad076d2b6a5b
+                            Author: William Durand <william.durand1@gmail.com>
+                            Date:   Thu Nov 13 10:22:17 2014 +0100
+
+                                Fix undefined variable
+
+                                Signed-off-by: William Durand <william.durand1@gmail.com>
+                            ```
+
+                            <br>
+                            `patch -p1` works too!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## GitHub Tip <span class="title-inverted">#1</span>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `.patch`
+                            <br>
+
+                            ``` http
+                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
+                            ```
+
+                            ![](images/patch.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Applying A Commit As A Patch
+                            <bR>
+
+                            ``` bash
+                            $ curl https://github.com/your/repo/commit/<SHA>.patch |git am
+                            Applying: Fix undefined variable
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `.diff`
+                            <br>
+
+                            ``` http
+                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
+                            ```
+
+                            ![](images/diff.png)
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## `hub`
+
+                            git + hub = github
+
+                            <br>
+                            `alias git=hub`
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Clone
+                            <br>
+
+                            ``` bash
+                            git clone random/repo
+                            # git clone git://github.com/random/repo.git
+                            ```
+
+                            ``` bash
+                            git clone repo
+                            # git clone git://github.com/YOUR/repo.git
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Browse
+                            <br>
+
+                            ``` bash
+                            git browse
+                            # open https://github.com/random/repo
+                            ```
+
+                            ``` bash
+                            git browse -- issues
+                            # open https://github.com/random/repo/issues
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Easy Fetch
+                            <br>
+
+                            ``` bash
+                            git fetch ubermuda
+                            # git remote add ubermuda git://github.com/ubermuda/repo.git
+                            # git fetch ubermuda
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Checkout <i class="fa fa-heart"></i>
+                            <br>
+
+                            ``` bash
+                            git checkout https://github.com/your/repo/pull/123
+                            # git remote add contributor git://github.com/contributor/repo.git
+                            # git fetch contributor
+                            # git checkout -b contributor-branch contributor/branch
+                            ```
+
+                            <br>
+                            Best way to [work on|review|test] a Pull Request so far!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Apply Commits
+                            <br>
+
+                            ``` bash
+                            git am -3 https://github.com/your/repo/pull/123
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Cherry-Pick
+                            <br>
+
+                            ``` bash
+                            git cherry-pick https://github.com/random/repo/commit/SHA
+                            # git remote random git://github.com/random/repo.git
+                            # git fetch random
+                            # git cherry-pick SHA
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### More!
+                            <br>
+
+                            ``` bash
+                            git fork, git pull-request, merge, ci-status, etc.
+                            ```
+
+                            <br>
+                            <i class="fa fa-link"></i> [hub.github.com](https://hub.github.com/)
+                        </script>
+                    </section>
+                </section>
 
                 <section data-markdown>
                     <script type="text/template">
