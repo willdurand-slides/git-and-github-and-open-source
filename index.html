@@ -32,29 +32,110 @@
             <div class="slides">
                 <section>
                     <h1 class="title">Git <span class="title-inverted">&</span> GitHub <span class="title-inverted">&</span> Open Source</h1>
-                    <em>William Durand - November 15th, 2014</em>
+                    <em>William Durand - November 19th, 2015</em>
                 </section>
 
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Open Source
+                            # Git
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            In production and development, Open Source as a development model promotes a **universal
-                            access** via a **free license** to a product's design or blueprint [...].
+                            ## (My) Useful<br>Git Commands
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Atomic Commits
+
+                            ``` bash
+                            git add -p
+                            ```
+
+                            ``` diff
+diff --git a/test.js b/test.js
+index 60ac996..2a57310 100644
+--- a/test.js
++++ b/test.js
+@@ -1,6 +1,5 @@
+ (function () {
+-    var i, j;
++    var i = 0, j;
+
+-    i = 0;
+-    j = i;
++    j = 1;
+ })();
+Stage this hunk [y,n,q,a,d,/,s,e,?]? s
+Split into 2 hunks.
+@@ -1,3 +1,3 @@
+ (function () {
+-    var i, j;
++    var i = 0, j;
+
+Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Amending A Commit
+                            <br>
+
+                            ``` bash
+                            git commit --amend -m 'Fix undefined variable j
+
+                            Fix #123'
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Fast Pull & Rebase
+                            <br>
+
+                            ``` bash
+                            git pull --rebase origin master
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Go Back
+                            <br>
+
+                            ``` bash
+                            git checkout -
+                            Switched to branch 'master'
+                            ```
+
+                            ``` bash
+                            git checkout -
+                            Switched to branch 'feat-undefined-variable'
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### (Un)Merged Branch
+                            <br>
+
+                            ``` bash
+                            git branch --no-merged
+                              develop
+                              feat-another-feature
+                              feat-my-feature
+                              fix-undefined-variable
+                            ```
 
                             <br>
-                            <small>
-                                [http://en.wikipedia.org/wiki/Open_source](http://en.wikipedia.org/wiki/Open_source)
-                            <small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Open-source software is very often developed<br>in a **public**, **collaborative** manner.
+
+                            ``` bash
+                            git branch --merged
+                            * master
+                            ```
                         </script>
                     </section>
                 </section>
@@ -62,7 +143,7 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## <i class="title-inverted fa fa-github"></i> GitHub
+                            # <i class="title-inverted fa fa-github"></i> GitHub
                         </script>
                     </section>
                     <section>
@@ -150,6 +231,139 @@
                 </section>
 
                 <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # `hub`
+
+                            git + hub = github
+
+                            <br>
+                            `alias git=hub`
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Clone
+                            <br>
+
+                            ``` bash
+                            git clone random/repo
+                            # git clone git://github.com/random/repo.git
+                            ```
+
+                            ``` bash
+                            git clone repo
+                            # git clone git://github.com/YOUR/repo.git
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Browse
+                            <br>
+
+                            ``` bash
+                            git browse
+                            # open https://github.com/random/repo
+                            ```
+
+                            ``` bash
+                            git browse -- issues
+                            # open https://github.com/random/repo/issues
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Easy Fetch
+                            <br>
+
+                            ``` bash
+                            git fetch ubermuda
+                            # git remote add ubermuda git://github.com/ubermuda/repo.git
+                            # git fetch ubermuda
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Checkout <i class="fa fa-heart"></i>
+                            <br>
+
+                            ``` bash
+                            git checkout https://github.com/your/repo/pull/123
+                            # git remote add contributor git://github.com/contributor/repo.git
+                            # git fetch contributor
+                            # git checkout -b contributor-branch contributor/branch
+                            ```
+
+                            <br>
+                            Best way to [work on|review|test] a Pull Request so far!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Apply Commits
+                            <br>
+
+                            ``` bash
+                            git am -3 https://github.com/your/repo/pull/123
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Cherry-Pick
+                            <br>
+
+                            ``` bash
+                            git cherry-pick https://github.com/random/repo/commit/SHA
+                            # git remote random git://github.com/random/repo.git
+                            # git fetch random
+                            # git cherry-pick SHA
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### More!
+                            <br>
+
+                            ``` bash
+                            git fork, git pull-request, merge, ci-status, etc.
+                            ```
+
+                            <br>
+                            <small>
+                                <i class="fa fa-link"></i> [hub.github.com](https://hub.github.com/)
+                            </small>
+                        </script>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Open Source
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            In production and development, Open Source as a development model promotes a **universal
+                            access** via a **free license** to a product's design or blueprint [...].
+
+                            <br>
+                            <small>
+                                [http://en.wikipedia.org/wiki/Open_source](http://en.wikipedia.org/wiki/Open_source)
+                            <small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Open-source software is very often developed<br>in a **public**, **collaborative** manner.
+                        </script>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             ## How To Contribute?
@@ -286,9 +500,6 @@
                             ![](images/carlton.gif)
                         </script>
                     </section>
-                </section>
-
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## What Happens Then?
@@ -366,117 +577,6 @@
                             1. `git push origin master --tags`
                             1. Publish artifact (`gem push`, etc.)
                             1. Publish a GitHub release
-                        </script>
-                    </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## `hub`
-
-                            git + hub = github
-
-                            <br>
-                            `alias git=hub`
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Clone
-                            <br>
-
-                            ``` bash
-                            git clone random/repo
-                            # git clone git://github.com/random/repo.git
-                            ```
-
-                            ``` bash
-                            git clone repo
-                            # git clone git://github.com/YOUR/repo.git
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Browse
-                            <br>
-
-                            ``` bash
-                            git browse
-                            # open https://github.com/random/repo
-                            ```
-
-                            ``` bash
-                            git browse -- issues
-                            # open https://github.com/random/repo/issues
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Easy Fetch
-                            <br>
-
-                            ``` bash
-                            git fetch ubermuda
-                            # git remote add ubermuda git://github.com/ubermuda/repo.git
-                            # git fetch ubermuda
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Checkout <i class="fa fa-heart"></i>
-                            <br>
-
-                            ``` bash
-                            git checkout https://github.com/your/repo/pull/123
-                            # git remote add contributor git://github.com/contributor/repo.git
-                            # git fetch contributor
-                            # git checkout -b contributor-branch contributor/branch
-                            ```
-
-                            <br>
-                            Best way to [work on|review|test] a Pull Request so far!
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Apply Commits
-                            <br>
-
-                            ``` bash
-                            git am -3 https://github.com/your/repo/pull/123
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Cherry-Pick
-                            <br>
-
-                            ``` bash
-                            git cherry-pick https://github.com/random/repo/commit/SHA
-                            # git remote random git://github.com/random/repo.git
-                            # git fetch random
-                            # git cherry-pick SHA
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### More!
-                            <br>
-
-                            ``` bash
-                            git fork, git pull-request, merge, ci-status, etc.
-                            ```
-
-                            <br>
-                            <small>
-                                <i class="fa fa-link"></i> [hub.github.com](https://hub.github.com/)
-                            </small>
                         </script>
                     </section>
                 </section>
@@ -715,106 +815,6 @@
                             </li>
                         </ul>
                     </script>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Bonus: (My) Useful<br>Git Commands
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Atomic Commits
-
-                            ``` bash
-                            git add -p
-                            ```
-
-                            ``` diff
-diff --git a/test.js b/test.js
-index 60ac996..2a57310 100644
---- a/test.js
-+++ b/test.js
-@@ -1,6 +1,5 @@
- (function () {
--    var i, j;
-+    var i = 0, j;
-
--    i = 0;
--    j = i;
-+    j = 1;
- })();
-Stage this hunk [y,n,q,a,d,/,s,e,?]? s
-Split into 2 hunks.
-@@ -1,3 +1,3 @@
- (function () {
--    var i, j;
-+    var i = 0, j;
-
-Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Amending A Commit
-                            <br>
-
-                            ``` bash
-                            git commit --amend -m 'Fix undefined variable j
-
-                            Fix #123'
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Fast Pull & Rebase
-                            <br>
-
-                            ``` bash
-                            git pull --rebase origin master
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Go Back
-                            <br>
-
-                            ``` bash
-                            git checkout -
-                            Switched to branch 'master'
-                            ```
-
-                            ``` bash
-                            git checkout -
-                            Switched to branch 'feat-undefined-variable'
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### (Un)Merged Branch
-                            <br>
-
-                            ``` bash
-                            git branch --no-merged
-                              develop
-                              feat-another-feature
-                              feat-my-feature
-                              fix-undefined-variable
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git branch --merged
-                            * master
-                            ```
-                        </script>
-                    </section>
                 </section>
 
                 <section data-markdown>
