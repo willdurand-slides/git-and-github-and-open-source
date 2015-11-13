@@ -26,7 +26,7 @@
         <![endif]-->
     </head>
     <body>
-        <img src="images/clermontech.png" id="logo" />
+        <img src="images/lavajug.png" id="logo" />
 
         <div class="reveal">
             <div class="slides">
@@ -43,7 +43,32 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            Git is a widely used **version control system** for software development.
+                            It is a **distributed** revision control system.
+
+                            <br>
+                            <small>
+                                <a href="https://en.wikipedia.org/wiki/Git_(software)">https://en.wikipedia.org/wiki/Git_(software)</a>
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            // TODO: scheme
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## (My) Useful<br>Git Commands
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Rebasing
+
+                            ``` bash
+                            git rebase -i HEAD~<number of commits>
+                            ```
                         </script>
                     </section>
                     <section data-markdown>
@@ -138,6 +163,146 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             ```
                         </script>
                     </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            // TODO: force push
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Dealing With<br>PATCH <span class="title-inverted">&</span> DIFF
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Creating A Patch
+
+                            ```
+                            git format-patch master --stdout > fix-undefined-variable.patch
+                            ```
+
+                            ```
+                            From: William Durand <will+git@drnd.me>
+                            Date: Thu, 13 Nov 2014 10:22:17 +0100
+                            Subject: [PATCH] Fix undefined variable
+
+                            ---
+                             test.js | 2 +-
+                             1 file changed, 1 insertion(+), 1 deletion(-)
+
+                            diff --git a/test.js b/test.js
+                            index 760e4eb..60ac996 100644
+                            --- a/test.js
+                            +++ b/test.js
+                            @@ -1,5 +1,5 @@
+                             (function () {
+                            -    var i;
+                            +    var i, j;
+
+                            i = 0;
+                            j = i;
+                            --
+                            2.1.2
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Changes Overview
+                            <br>
+
+                            ```
+                            git apply --stat fix-undefined-variable.patch
+                            ```
+
+                            ```
+                             test.js |    2 +-
+                             1 file changed, 1 insertion(+), 1 deletion(-)
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Test The Patch
+                            <br>
+
+                            ```
+                            git apply --check fix-undefined-variable.patch
+                            ```
+
+                            <br>
+                            No output == <i class="fa fa-thumbs-o-up"></i>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Then, Apply
+                            <br>
+
+                            ``` bash
+                            git am --signoff < fix-undefined-variable.patch
+                            ```
+
+                            ``` bash
+                            Applying: Fix undefined variable
+                            ```
+
+                            ``` bash
+                            commit 4c20f8d517b99638f5379f3f0894ad076d2b6a5b
+                            Author: William Durand <will+git@drnd.me>
+                            Date:   Thu Nov 13 10:22:17 2014 +0100
+
+                                Fix undefined variable
+
+                                Signed-off-by: William Durand <will+git@drnd.me>
+                            ```
+
+                            <br>
+                            BTW, `patch -p1` works too!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## GitHub Tip <span class="title-inverted">#2</span>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `.patch`
+                            <br>
+
+                            ``` http
+                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
+                            ```
+
+                            ![](images/patch.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Applying A Commit As A Patch
+                            <bR>
+
+                            ``` bash
+                            curl https://github.com/your/repo/commit/<SHA>.patch |git am
+                            Applying: Fix undefined variable
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `.diff`
+                            <br>
+
+                            ``` http
+                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
+                            ```
+
+                            ![](images/diff.png)
+                        </script>
+                    </section>
+                </section>
+
                 </section>
 
                 <section>
@@ -423,14 +588,14 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             Capitalized, short (50 chars or less) summary
 
                             More detailed explanatory text, if necessary.  Wrap it to about 72
-                            characters or so.  In some contexts, the first line is treated as the
-                            subject of an email and the rest of the text as the body.  The blank
+                            characters or so. In some contexts, the first line is treated as the
+                            subject of an email and the rest of the text as the body. The blank
                             line separating the summary from the body is critical (unless you omit
                             the body entirely); tools like rebase can get confused if you run the
                             two together.
 
                             Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
-                            or "Fixes bug."  This convention matches up with commit messages generated
+                            or "Fixes bug." This convention matches up with commit messages generated
                             by commands like git merge and git revert.
 
                             Further paragraphs come after blank lines.
@@ -440,6 +605,40 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             <small>
                                 <i class="fa fa-link"></i> [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
                             </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            #### First line ≤ 50 chars, present imperative
+
+                            "Subject of an email"
+
+                            <br>
+
+                            **Emojis** all the things! (like [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages))
+                            <br>
+                            ![](images/atom-emojis.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            (Blank line before details)
+
+                            <br>
+
+                            Details lines ≤ 72 chars: explain what you did
+
+                            "Body of an email"
+
+                            <br>
+
+                            [**G**itHub **F**lavored **M**arkdown](https://help.github.com/articles/github-flavored-markdown/) (GFM):
+
+                            * Italics, bold
+                            * URL autolinking
+                            * Syntax highlighting
+                            * **Auto-close issues**: `Fix #123`
+                            * _and more!_
                         </script>
                     </section>
                     <section data-markdown>
@@ -577,142 +776,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             1. `git push origin master --tags`
                             1. Publish artifact (`gem push`, etc.)
                             1. Publish a GitHub release
-                        </script>
-                    </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Dealing With<br>PATCH <span class="title-inverted">&</span> DIFF
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Creating A Patch
-
-                            ```
-                            git format-patch master --stdout > fix-undefined-variable.patch
-                            ```
-
-                            ```
-                            From: William Durand <william.durand1@gmail.com>
-                            Date: Thu, 13 Nov 2014 10:22:17 +0100
-                            Subject: [PATCH] Fix undefined variable
-
-                            ---
-                             test.js | 2 +-
-                             1 file changed, 1 insertion(+), 1 deletion(-)
-
-                            diff --git a/test.js b/test.js
-                            index 760e4eb..60ac996 100644
-                            --- a/test.js
-                            +++ b/test.js
-                            @@ -1,5 +1,5 @@
-                             (function () {
-                            -    var i;
-                            +    var i, j;
-
-                            i = 0;
-                            j = i;
-                            --
-                            2.1.2
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Changes Overview
-                            <br>
-
-                            ```
-                            git apply --stat fix-undefined-variable.patch
-                            ```
-
-                            ```
-                             test.js |    2 +-
-                             1 file changed, 1 insertion(+), 1 deletion(-)
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Test The Patch
-                            <br>
-
-                            ```
-                            git apply --check fix-undefined-variable.patch
-                            ```
-
-                            <br>
-                            No output == <i class="fa fa-thumbs-o-up"></i>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Then, Apply
-                            <br>
-
-                            ``` bash
-                            git am --signoff < fix-undefined-variable.patch
-                            ```
-
-                            ``` bash
-                            Applying: Fix undefined variable
-                            ```
-
-                            ``` bash
-                            commit 4c20f8d517b99638f5379f3f0894ad076d2b6a5b
-                            Author: William Durand <william.durand1@gmail.com>
-                            Date:   Thu Nov 13 10:22:17 2014 +0100
-
-                                Fix undefined variable
-
-                                Signed-off-by: William Durand <william.durand1@gmail.com>
-                            ```
-
-                            <br>
-                            BTW, `patch -p1` works too!
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## GitHub Tip <span class="title-inverted">#2</span>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `.patch`
-                            <br>
-
-                            ``` http
-                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
-                            ```
-
-                            ![](images/patch.png)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Applying A Commit As A Patch
-                            <bR>
-
-                            ``` bash
-                            curl https://github.com/your/repo/commit/<SHA>.patch |git am
-                            Applying: Fix undefined variable
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `.diff`
-                            <br>
-
-                            ``` http
-                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
-                            ```
-
-                            ![](images/diff.png)
                         </script>
                     </section>
                 </section>
