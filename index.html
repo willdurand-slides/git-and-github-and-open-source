@@ -5,8 +5,8 @@
 
         <title>William Durand | Git & GitHub & Open Source</title>
 
-        <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
-        <link rel="stylesheet" href="css/theme.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
 
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="css/mono-blue.css">
@@ -35,12 +35,13 @@
                     <em>William Durand - November 19th, 2015</em>
                 </section>
 
+                <section data-markdown>
+                    <script type="text/template">
+                        # Git
+                    </script>
+                </section>
+
                 <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            # Git
-                        </script>
-                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             Git is a widely used **version control system** for software development.
@@ -48,7 +49,7 @@
 
                             <br>
                             <small>
-                                <a href="https://en.wikipedia.org/wiki/Git_(software)">https://en.wikipedia.org/wiki/Git_(software)</a>
+                                <i class="fa fa-link"></i> <a href="https://en.wikipedia.org/wiki/Git_(software)">https://en.wikipedia.org/wiki/Git_(software)</a>
                             </small>
                         </script>
                     </section>
@@ -59,15 +60,114 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ### `git archive`
+
+                            // TODO: example
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `pull` = `fetch` + `merge`
+
+                            That's not what you want! No. Really.
+
+                            <br>
+
+                            `git pull --rebase=preserve`<br>`pull.rebase=preserve` (config)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### **Re**use **Re**corded **Re**solution
+
+                            // TODO: fixme
+
+                            ``` bash
+                            git config --global rerere.enabled true
+                            ```
+
+                            <br>
+
+                            ``` bash
+                            git merge master
+                            ```
+
+                            ``` bash
+                            git commit --no-edit
+                            Recorded resolution for 'index.html'
+                            [old-branch abcd123] Merge branch 'master' into old-branch
+                            ```
+
+                            ``` bash
+                            git merge master
+                            Auto-merging style.css
+                            CONFLICT (add/add): Merge conflict in style.css
+                            Auto-merging index.html
+                            CONFLICT (content): Merge conflict in index.html
+                            Recorded preimage for 'style.css'
+                            Resolved 'index.html' using previous resolution.
+                            ```
+
+                            <small>
+                                <i class="fa fa-link"></i> [Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `git bisect`
+
+                            // TODO: example
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## (My) Useful<br>Git Commands
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Rebasing
+                            ### Interactive Rebase
 
                             ``` bash
                             git rebase -i HEAD~<number of commits>
+                            ```
+
+                            ``` bash
+pick d1ed4e4 Fix typo
+pick b49cb42 Update for lavajug
+pick e35510f Add new images
+
+# Rebase 5f167bb..e35510f onto 5f167bb (3 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Fast Pull & Rebase
+                            <br>
+
+                            ``` bash
+                            git pull --rebase origin master
                             ```
                         </script>
                     </section>
@@ -118,16 +218,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Fast Pull & Rebase
-                            <br>
-
-                            ``` bash
-                            git pull --rebase origin master
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
                             ### Go Back
                             <br>
 
@@ -168,6 +258,9 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             // TODO: force push
                         </script>
                     </section>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Dealing With<br>PATCH <span class="title-inverted">&</span> DIFF
@@ -183,7 +276,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
 
                             ```
                             From: William Durand <will+git@drnd.me>
-                            Date: Thu, 13 Nov 2014 10:22:17 +0100
+                            Date: Thu, 13 Nov 2015 10:22:17 +0100
                             Subject: [PATCH] Fix undefined variable
 
                             ---
@@ -209,7 +302,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Changes Overview
-                            <br>
 
                             ```
                             git apply --stat fix-undefined-variable.patch
@@ -224,7 +316,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Test The Patch
-                            <br>
 
                             ```
                             git apply --check fix-undefined-variable.patch
@@ -237,7 +328,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Then, Apply
-                            <br>
 
                             ``` bash
                             git am --signoff < fix-undefined-variable.patch
@@ -250,7 +340,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             ``` bash
                             commit 4c20f8d517b99638f5379f3f0894ad076d2b6a5b
                             Author: William Durand <will+git@drnd.me>
-                            Date:   Thu Nov 13 10:22:17 2014 +0100
+                            Date:   Thu Nov 13 10:22:17 2015 +0100
 
                                 Fix undefined variable
 
@@ -261,68 +351,26 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             BTW, `patch -p1` works too!
                         </script>
                     </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## GitHub Tip <span class="title-inverted">#2</span>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `.patch`
-                            <br>
-
-                            ``` http
-                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
-                            ```
-
-                            ![](images/patch.png)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Applying A Commit As A Patch
-                            <bR>
-
-                            ``` bash
-                            curl https://github.com/your/repo/commit/<SHA>.patch |git am
-                            Applying: Fix undefined variable
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `.diff`
-                            <br>
-
-                            ``` http
-                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
-                            ```
-
-                            ![](images/diff.png)
-                        </script>
-                    </section>
                 </section>
 
+                <section data-markdown>
+                    <script type="text/template">
+                        # <i class="title-inverted fa fa-github"></i> GitHub
+                    </script>
                 </section>
 
                 <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            # <i class="title-inverted fa fa-github"></i> GitHub
-                        </script>
-                    </section>
                     <section>
                         <img src="images/github.png" class="no-border" />
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            GitHub is the largest code host on the planet<br>with over **17.1 million** repositories.
+                            GitHub is the largest code host on the planet<br>with over **20 million** repositories.
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
                             ### Integrated Issue Tracking
-                            <br>
 
                             ![](images/issues.png)
                         </script>
@@ -330,7 +378,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Integrated Issue Tracking
-                            <br>
 
                             ![](images/issue-view.png)
                         </script>
@@ -338,7 +385,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Syntax Highlighting
-                            <br>
 
                             ![](images/issue-code.png)
                         </script>
@@ -359,6 +405,8 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ### Pull Request (PR)
+
                             **P**ull **R**equest = Code + Issue + Code Comments
                         </script>
                     </section>
@@ -366,6 +414,15 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                         <h3>GitHub Pages</h3>
 
                         <img src="images/pages.png" class="no-border" />
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### GitHub Pages
+
+                            Powered by Jekyll
+
+                            // TODO: fixme
+                        </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
@@ -381,6 +438,9 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             ![](images/compare.png)
                         </script>
                     </section>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## GitHub Tip <span class="title-inverted">#1</span>
@@ -398,7 +458,47 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            # `hub`
+                            ## GitHub Tip <span class="title-inverted">#2</span>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `.patch`
+
+                            ``` http
+                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
+                            ```
+
+                            ![](images/patch.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Applying A Commit As A Patch
+
+                            ``` bash
+                            curl https://github.com/your/repo/commit/<SHA>.patch |git am
+                            Applying: Fix undefined variable
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `.diff`
+
+                            ``` http
+                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
+                            ```
+
+                            ![](images/diff.png)
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## `hub`
 
                             git + hub = github
 
@@ -409,7 +509,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Clone
-                            <br>
 
                             ``` bash
                             git clone random/repo
@@ -425,7 +524,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Browse
-                            <br>
 
                             ``` bash
                             git browse
@@ -441,7 +539,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Easy Fetch
-                            <br>
 
                             ``` bash
                             git fetch ubermuda
@@ -453,7 +550,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Checkout <i class="fa fa-heart"></i>
-                            <br>
 
                             ``` bash
                             git checkout https://github.com/your/repo/pull/123
@@ -469,7 +565,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Apply Commits
-                            <br>
 
                             ``` bash
                             git am -3 https://github.com/your/repo/pull/123
@@ -479,7 +574,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Cherry-Pick
-                            <br>
 
                             ``` bash
                             git cherry-pick https://github.com/random/repo/commit/SHA
@@ -492,7 +586,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### More!
-                            <br>
 
                             ``` bash
                             git fork, git pull-request, merge, ci-status, etc.
@@ -506,13 +599,46 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                 </section>
 
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## More With GitHub?
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            // TODO: Waffle, Huboard, etc.
+                        </script>
+                    </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        # GitLab
+                    </script>
+                </section>
 
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            # Open Source
+                            // TODO: this section is incomplete
                         </script>
                     </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            gitlab.com
+                            framagit.org
+                        </script>
+                    </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        # Open Source
+                    </script>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             In production and development, Open Source as a development model promotes a **universal
@@ -520,7 +646,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
 
                             <br>
                             <small>
-                                [http://en.wikipedia.org/wiki/Open_source](http://en.wikipedia.org/wiki/Open_source)
+                                <i class="fa fa-link"></i> [http://en.wikipedia.org/wiki/Open_source](http://en.wikipedia.org/wiki/Open_source)
                             <small>
                         </script>
                     </section>
@@ -529,6 +655,9 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             Open-source software is very often developed<br>in a **public**, **collaborative** manner.
                         </script>
                     </section>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## How To Contribute?
@@ -549,7 +678,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Create A Branch
-                            <br>
 
                             ``` bash
                             git checkout -b feature-branch
@@ -559,7 +687,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Eat, Sleep, Code, Repeat.
-                            <br>
 
                             ![](images/programming.jpg)
                         </script>
@@ -601,7 +728,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             Further paragraphs come after blank lines.
                             ```
 
-                            <br>
                             <small>
                                 <i class="fa fa-link"></i> [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
                             </small>
@@ -626,7 +752,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
 
                             <br>
 
-                            Details lines ≤ 72 chars: explain what you did
+                            #### Details lines ≤ 72 chars: explain what you did
 
                             "Body of an email"
 
@@ -644,7 +770,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Rebase Your Branch
-
                         </script>
                     </section>
                     <section data-markdown>
@@ -686,7 +811,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Push & Create
-                            <br>
 
                             ![](images/recently_pushed_branch.png)
                         </script>
@@ -694,11 +818,13 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Profit!
-                            <br>
 
                             ![](images/carlton.gif)
                         </script>
                     </section>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## What Happens Then?
@@ -712,7 +838,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Pull Request Review
-                            <br>
 
                             * Understand the goal of the PR
                             * Try to reproduce the issue
@@ -730,13 +855,164 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 <section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## Give, Don't Take (Only)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            // TODO:
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## How To Open Source?
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### The `README` File
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                        ``` markdown
+project-x
+=========
+
+project-x is a better way to achieve this and that, by leveraging the new
+API, bla bla bla.
+
+## Usage
+
+...
+
+## Installation
+
+...
+
+## Requirements
+
+...
+
+## Contributing
+
+See CONTRIBUTING file.
+                        ```
+                        <small>
+                            README example 1/2
+                        </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                        ``` markdown
+## Running the Tests
+
+...
+
+## Credits
+
+...
+
+## Contributor Code of Conduct
+
+Please note that this project is released with a [Contributor Code of
+Conduct](http://contributor-covenant.org/). By participating in this project
+you agree to abide by its terms. See CODE_OF_CONDUCT file.
+
+## License
+
+project-x is released under the MIT License. See the bundled LICENSE file for
+details.
+                         ```
+
+                         <small>
+                             README example 2/2
+                         </small>
+                         </script>
+                     </section>
+                     <section data-markdown>
+                         <script type="text/template">
+                             ### Badges!
+                         </script>
+                     </section>
+                     <section data-markdown>
+                         <script type="text/template">
+                            ### The `CONTRIBUTING` File
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ![](images/contributing.png)
+                            <br>Also, checkout [Atom's one](https://github.com/atom/atom/blob/master/CONTRIBUTING.md)!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### The `CODE_OF_CONDUCT` File
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### <i class="fa fa-link"></i> <a href="http://contributor-covenant.org/"> <span class="title-inverted">contributor-covenant.org</span></a>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### License
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### <i class="fa fa-link"></i> <a href="http://www.tldrlegal.com/"><span class="title-inverted">tldrlegal.com</span></a>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### <i class="fa fa-link"></i> <a href="http://choosealicense.com/"><span class="title-inverted">choosealicense.com</span></a>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Write Tests & Automate
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Be Standard
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### You Need Feedback!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Attitude
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ![](images/not-your-code.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Hire People
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## Dealing With Releases
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
                             ### Semantic Versioning
-                            <br>
 
                             `MAJOR.MINOR.PATCH`
 
@@ -749,7 +1025,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Changelog
-                            <br>
 
                             A change log is a file which contains a curated,
                             ordered list of notable changes for each version of
@@ -764,7 +1039,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Release Process
-                            <br>
 
                             1. Run test suite(s)
                             1. Update documentation, changelog, version
@@ -778,9 +1052,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             1. Publish a GitHub release
                         </script>
                     </section>
-                </section>
-
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Dealing With<br>Everything Else
@@ -789,7 +1060,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Fixing The Code Is Not Enough
-                            <br>
 
                             ![](images/tweet-lukas.png)
                         </script>
@@ -797,7 +1067,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Full-Time Hobby
-                            <br>
 
                             ![](images/tweet-mike.png)
                         </script>
@@ -817,10 +1086,12 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                         <img src="images/support-twitter-1.png" />
                         <img src="images/support-twitter-2.png" />
                     </section>
+                    <section>
+                        <h2>But<span class="title-inverted">.</span></h2>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             ### Create Things That People Actually Use (<span class="title-inverted">&</span> Like)
-                            <br>
 
                             ![](images/thanks-geocoder.png)
                         </script>
@@ -828,7 +1099,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Inspire Others
-                            <br>
 
                             ![](images/thanks-credits.png)
                         </script>
@@ -843,7 +1113,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Receive Overwhelming Feedback
-                            <br>
 
                             ![](images/thanks-email.png)
                         </script>
@@ -853,6 +1122,11 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             ### ... <span class="title-inverted">&</span> Gifts <i class="fa fa-heart"></i>
 
                             ![](images/gifts.jpg)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### ![](images/gifts-es.png)
                         </script>
                     </section>
                 </section>
@@ -886,10 +1160,15 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
 
                         <small>
 
+                        * http://williamdurand.fr/2013/07/04/on-open-sourcing-libraries/
                         * http://williamdurand.fr/2013/11/20/on-creating-pull-requests/
                         * http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
                         * http://git-scm.com/book/en/v2/Git-Branching-Rebasing
                         * http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+                        * https://github.com/blog/1530-choosing-an-open-source-license
+                        * https://help.github.com/articles/open-source-licensing/
+                        * http://www.codinghorror.com/blog/2007/04/pick-a-license-any-license.html
+                        * https://medium.com/code-zen/how-to-maintain-a-successful-open-source-project-aaa2a5437d3a
 
                         </small>
                     </script>
@@ -897,7 +1176,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
             </div>
         </div>
         <script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
-        <script type="text/javascript" src="reveal.js/js/reveal.min.js"></script>
+        <script type="text/javascript" src="reveal.js/js/reveal.js"></script>
         <script type="text/javascript">
             Reveal.initialize({
                 slideNumber: !window.location.search.match(/print-pdf/gi),

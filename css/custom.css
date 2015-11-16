@@ -1,6 +1,5 @@
-h1.title {
-    font-size: 1.7em !important;
-    font-weight: bold;
+h1 {
+    font-size: 3.3em !important;
 }
 
 .title-inverted {
@@ -41,10 +40,15 @@ img.no-border,
     background: none !important;
 }
 
-.reveal pre code {
-    max-height: 490px;
-}
-
 .no-bullets li {
     list-style-type: none;
+}
+
+.reveal pre {
+    font-size: 0.54em !important;
+    width: 91% !important;
+}
+
+.reveal pre code {
+    max-height: 490px !important;
 }

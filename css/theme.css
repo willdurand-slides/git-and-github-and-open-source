@@ -42,13 +42,25 @@ body {
   text-shadow: none; }
 
 .reveal h1 {
+  font-size: 3.77em; }
+
+.reveal h2 {
+  font-size: 2.11em; }
+
+.reveal h3 {
+  font-size: 1.55em; }
+
+.reveal h4 {
+  font-size: 1em; }
+
+.reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); }
 
 /*********************************************
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #333;
+  color: #666;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -132,10 +144,34 @@ body {
 /*********************************************
  * SLIDE NUMBER
  *********************************************/
-.reveal .slide-number {
-  color: #333; }
 
 .reveal i {
   font-family: 'FontAwesome';
   font-style: normal;
 }
+
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+  text-align: left;
+  font-size: .54em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0 0 6px rgba(0,0,0,.3);
+}
+
+.reveal code {
+  padding: 5px;
+  overflow: auto;
+  max-height: 490px;
+  word-wrap: normal;
+}
+
+.reveal pre code {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  word-wrap: normal; }
