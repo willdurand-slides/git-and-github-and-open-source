@@ -104,6 +104,9 @@
                             `git pull --rebase=preserve`<br>`pull.rebase=preserve` (config)
                         </script>
                     </section>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Advanced Features
@@ -120,6 +123,8 @@
                             ``` bash
                             git config --global help.autocorrect 1
                             ```
+
+                            <br>
 
                             ``` bash
                             git lol
@@ -158,8 +163,11 @@
                             git archive --format zip -o snapshot.zip HEAD
                             ```
 
+                            <br>
+                            "Export" all files from a given commit into a directory:
+
                             ``` bash
-                            git archive --format tar --prefix myapp/ <SHA> | (cd /tmp && tar xf -)
+                            git archive --format tar --prefix myapp/ <commit> | (cd /tmp && tar xf -)
                             ```
                         </script>
                     </section>
@@ -995,12 +1003,19 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Give, Don't Take (Only)
+                            ## Give, Don't (Only) Take
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            // TODO:
+                            ### Open Source Is Not Free
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Still not convinced?
+
+                            Even Microsoft contributes to Open Source!
                         </script>
                     </section>
                 </section>
@@ -1285,6 +1300,14 @@ details.
                             ### ![](images/gifts-es.png)
                         </script>
                     </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Everyone can contribute
+
+                        <i class="fa fa-link"></i> [Your First PR](https://yourfirstpr.github.io/)
+                    </script>
                 </section>
 
                 <section data-markdown>
