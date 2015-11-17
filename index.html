@@ -37,8 +37,8 @@
 
                 <section data-markdown>
                     <script type="text/template">
-                        # Git
-                    </script>
+                    # <i class="title-inverted fa fa-git"></i>
+                </script>
                 </section>
 
                 <section>
@@ -53,16 +53,44 @@
                             </small>
                         </script>
                     </section>
-                    <section data-markdown>
+                    <section data-markdown class="no-border">
                         <script type="text/template">
-                            // TODO: scheme
+                            ### ![](images/git-local-remotes.png)
+
+                            <small>
+                                Credit: [https://aht.github.io/whatisgit/](https://aht.github.io/whatisgit/)
+                            </small>
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### `git archive`
+                            ## Git Tip <span class="title-inverted">#1</span>
 
-                            // TODO: example
+                            <br>
+
+                            ### Local Cherry-Picking
+
+                            ``` bash
+                            git checkout <other-branch> -- /path/to/file
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Merge vs Rebase
+
+                            ![](images/merge_vs_rebase.png)
+
+                            <small>
+                                Credit: [http://surpreem.com/archives/1524](http://surpreem.com/archives/1524)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### No Fast Forward, Please.
+
+                            ![](images/no-ff.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -78,9 +106,66 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### **Re**use **Re**corded **Re**solution
+                            ## Advanced Features
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Git Tip <span class="title-inverted">#2</span>
 
-                            // TODO: fixme
+                            <br>
+
+                            ### Autocorrection FTW
+
+                            ``` bash
+                            git config --global help.autocorrect 1
+                            ```
+
+                            ``` bash
+                            git lol
+                            WARNING: You called a Git command named 'lol', which does not exist.
+                            Continuing under the assumption that you meant 'log'
+                            in 0.1 seconds automatically...
+                            commit 2feb149c8e76d12848f7535a8eb4d51b1c225776
+                            Author: William Durand <will+git@drnd.me>
+                            Date:   Mon Nov 16 14:54:53 2015 +0100
+
+                                add badges
+
+                            ...
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Git Tip <span class="title-inverted">#3</span>
+
+                            <br>
+
+                            ### Built-In Auto-Completion
+
+                            ``` bash
+                            git co<tab><tab>
+                            commit config
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### `git archive`
+
+                            ``` bash
+                            git archive --format zip -o snapshot.zip HEAD
+                            ```
+
+                            ``` bash
+                            git archive --format tar --prefix myapp/ <SHA> | (cd /tmp && tar xf -)
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### **Re**use **Re**corded **Re**solution
 
                             ``` bash
                             git config --global rerere.enabled true
@@ -90,6 +175,10 @@
 
                             ``` bash
                             git merge master
+                            Auto-merging index.html
+                            CONFLICT (content): Merge conflict in index.html
+                            Recorded preimage for 'index.html'
+                            Automatic merge failed; fix conflicts and then commit the result.
                             ```
 
                             ``` bash
@@ -98,13 +187,12 @@
                             [old-branch abcd123] Merge branch 'master' into old-branch
                             ```
 
+                            <br>
+
                             ``` bash
                             git merge master
-                            Auto-merging style.css
-                            CONFLICT (add/add): Merge conflict in style.css
                             Auto-merging index.html
                             CONFLICT (content): Merge conflict in index.html
-                            Recorded preimage for 'style.css'
                             Resolved 'index.html' using previous resolution.
                             ```
 
@@ -117,7 +205,30 @@
                         <script type="text/template">
                             ### `git bisect`
 
-                            // TODO: example
+                            Performs a **binary search** across a range of commits
+                            <br>to help you find where an error was introduced:
+
+                            ``` bash
+                            git bisect start
+                            ```
+
+                            <br>
+
+                            ``` bash
+                            git bisect good abcd123
+                            ```
+
+                            ``` bash
+                            git bisect bad [badd123]
+                            ```
+
+                            <br>
+
+
+                            ``` bash
+                            # The script should end with a non-zero return status when it fails
+                            git bisect run mvn clean test
+                            ```
                         </script>
                     </section>
                 </section>
@@ -126,6 +237,25 @@
                     <section data-markdown>
                         <script type="text/template">
                             ## (My) Useful<br>Git Commands
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Stash
+
+                            <br>
+
+                            Quickly save current state:
+
+                            ``` bash
+                            git stash
+                            ```
+
+                            Restore it, later:
+
+                            ``` bash
+                            git stash apply
+                            ```
                         </script>
                     </section>
                     <section data-markdown>
@@ -207,6 +337,11 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Amending A Commit
+
+                            ``` bash
+                            git commit --amend
+                            ```
+
                             <br>
 
                             ``` bash
@@ -251,11 +386,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             git branch --merged
                             * master
                             ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            // TODO: force push
                         </script>
                     </section>
                 </section>
@@ -365,7 +495,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            GitHub is the largest code host on the planet<br>with over **20 million** repositories.
+                            GitHub is the largest code host on the planet<br>with over **29.5 million** repositories.
                         </script>
                     </section>
                     <section data-markdown>
@@ -419,9 +549,9 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                         <script type="text/template">
                             ### GitHub Pages
 
-                            Powered by Jekyll
-
-                            // TODO: fixme
+                            * [Jekyll](http://jekyllrb.com/)-friendly
+                            * Custom URLs
+                            * Built-in layouts
                         </script>
                     </section>
                     <section data-markdown>
@@ -438,31 +568,26 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             ![](images/compare.png)
                         </script>
                     </section>
-                </section>
-
-                <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## GitHub Tip <span class="title-inverted">#1</span>
+                            ### Protected Branches
+
+                            ![](images/protected-branches.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## GitHub Tip <span class="title-inverted">#1</span>
+
                             ### `t` File Finder
 
                             ![](images/filefinder.png)
                         </script>
                     </section>
-                </section>
-
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## GitHub Tip <span class="title-inverted">#2</span>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
+
                             ### `.patch`
 
                             ``` http
@@ -484,7 +609,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### `.diff`
+                            ### Also, `.diff`
 
                             ``` http
                             https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
@@ -599,19 +724,6 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                 </section>
 
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## More With GitHub?
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            // TODO: Waffle, Huboard, etc.
-                        </script>
-                    </section>
-                </section>
-
                 <section data-markdown>
                     <script type="text/template">
                         # GitLab
@@ -619,26 +731,49 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 </section>
 
                 <section>
-                    <section data-markdown>
+                    <section data-markdown class="no-border">
                         <script type="text/template">
-                            // TODO: this section is incomplete
+                            ### ![](images/gitlab.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            gitlab.com
-                            framagit.org
+                            GitLab is an **Open Source** (MIT licensed)
+                            web-based Git repository manager with wiki and
+                            issue tracking features.
                         </script>
                     </section>
-                </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            GitLab started a side project in 2011.
 
-                <section data-markdown>
-                    <script type="text/template">
-                        # Open Source
-                    </script>
+                            <br>
+
+                            In 2015, more than 800 (worldwide) contributors,
+                            10+ employees, and 1.5M raised in seed funding in July.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Getting Started
+
+                            * [gitlab.com](https://gitlab.com)
+                            * [git.framasoft.org](https://git.framasoft.org)
+                            * On your [Raspberry Pi](https://about.gitlab.com/2015/04/21/gitlab-on-raspberry-pi-2/)
+                            * In your company
+
+                            <br>
+                            **Pro-tip:** Merge Request ≈ Pull Request
+                        </script>
+                    </section>
                 </section>
 
                 <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Open Source
+                        </script>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             In production and development, Open Source as a development model promotes a **universal
@@ -647,7 +782,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             <br>
                             <small>
                                 <i class="fa fa-link"></i> [http://en.wikipedia.org/wiki/Open_source](http://en.wikipedia.org/wiki/Open_source)
-                            <small>
+                                <small>
                         </script>
                     </section>
                     <section data-markdown>
@@ -993,6 +1128,10 @@ details.
                     <section data-markdown>
                         <script type="text/template">
                             ### You Need Feedback!
+
+                            * Twitter
+                            * Hacker News
+                            * Your team
                         </script>
                     </section>
                     <section data-markdown>
@@ -1003,6 +1142,13 @@ details.
                     <section data-markdown>
                         <script type="text/template">
                             ![](images/not-your-code.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Communication is the key!
+
+                            ![](images/issue-labels.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -1103,14 +1249,7 @@ details.
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Inspire Others
-
-                            ![](images/thanks-credits.png)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Makes People Feel Good
+                            ### Make People Feel Good
 
                             ![](images/feel-good.png)
                         </script>
@@ -1174,6 +1313,10 @@ details.
                         * https://help.github.com/articles/open-source-licensing/
                         * http://www.codinghorror.com/blog/2007/04/pick-a-license-any-license.html
                         * https://medium.com/code-zen/how-to-maintain-a-successful-open-source-project-aaa2a5437d3a
+                        * http://ryanbigg.com/2015/11/open-source-work/
+                        * https://robots.thoughtbot.com/git-bisect
+                        * https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git
+                        * https://git-scm.com/docs/git-archive
 
                         </small>
                     </script>

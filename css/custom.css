@@ -46,9 +46,13 @@ img.no-border,
 
 .reveal pre {
     font-size: 0.54em !important;
-    width: 91% !important;
+    width: 95% !important;
 }
 
 .reveal pre code {
     max-height: 490px !important;
+}
+
+.reveal ol {
+    width: 100% !important;
 }
