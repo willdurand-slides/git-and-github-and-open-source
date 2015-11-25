@@ -38,6 +38,7 @@
                         * New screenshot GitHub
                         * give, not take
                         * Money
+                        * Burnout
                     </script>
                 </section>
 
@@ -57,7 +58,7 @@
                             ### Free Software != Open Source
 
                             <small>
-                                <i class="fa fa-link"></i> [Why Open Source misses the point of Free Software](https://www.gnu.org/philosophy/open-source-misses-the-point.html)
+                                <i class="fa fa-link"></i> [Why Open Source misses the point of Free Software](https://www.gnu.org/philosophy/open-source-misses-the-point.html) (according to Richard Stallman)
                             </small>
                         </script>
                     </section>
@@ -93,13 +94,12 @@
                     </script>
                 </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        # <i class="title-inverted fa fa-git"></i>
-                    </script>
-                </section>
-
                 <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # <i class="title-inverted fa fa-git"></i>
+                        </script>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             Git is a widely used **version control system** for software development.
@@ -122,11 +122,11 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Git Tip <span class="title-inverted">#1</span>
+                            ### Git Tip <span class="title-inverted">#1</span>
 
                             <br>
 
-                            ### Local Cherry-Picking
+                            #### Local Cherry-Picking
 
                             ``` bash
                             git checkout <other-branch> -- /path/to/file
@@ -164,6 +164,15 @@
                             ```
                         </script>
                     </section>
+                    <section data-markdown class="img-bg-color img-no-margin">
+                        <script type="text/template">
+                            ### But, Rebase Kills Merges
+
+                            ![](images/pull-rebase-orig.png)
+
+                            ![](images/pull-rebase.png)
+                        </script>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             ### Preserving existing merges
@@ -173,6 +182,13 @@
                             `git pull --rebase=preserve`
                             <br>or<br>
                             `pull.rebase=preserve` (config)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Tadaaaam! <i class="fa fa-smile-o"></i>
+
+                            ![](images/pull-rebase-preserve.png)
                         </script>
                     </section>
                 </section>
@@ -185,11 +201,11 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Git Tip <span class="title-inverted">#2</span>
+                            ### Git Tip <span class="title-inverted">#2</span>
 
                             <br>
 
-                            ### Autocorrection FTW
+                            #### Autocorrection FTW
 
                             ``` bash
                             git config --global help.autocorrect 1
@@ -214,11 +230,11 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Git Tip <span class="title-inverted">#3</span>
+                            ### Git Tip <span class="title-inverted">#3</span>
 
                             <br>
 
-                            ### Built-In Auto-Completion
+                            #### Built-In Auto-Completion
 
                             ``` bash
                             git co<tab><tab>
@@ -229,6 +245,8 @@
                     <section data-markdown>
                         <script type="text/template">
                             ### `git archive`
+
+                            <br>
 
                             ``` bash
                             git archive --format zip -o snapshot.zip HEAD
@@ -418,6 +436,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Amending A Commit
+                            <br>
 
                             ``` bash
                             git commit --amend
@@ -515,6 +534,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Changes Overview
+                            <br>
 
                             ```
                             git apply --stat fix-undefined-variable.patch
@@ -529,6 +549,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Test The Patch
+                            <br>
 
                             ```
                             git apply --check fix-undefined-variable.patch
@@ -541,6 +562,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Then, Apply
+                            <br>
 
                             ``` bash
                             git am --signoff < fix-undefined-variable.patch
@@ -566,13 +588,12 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                 </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        # <i class="title-inverted fa fa-github"></i> GitHub
-                    </script>
-                </section>
-
                 <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # <i class="title-inverted fa fa-github"></i> GitHub
+                        </script>
+                    </section>
                     <section>
                         <img src="images/github.png" class="no-border" />
                     </section>
@@ -663,18 +684,18 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## GitHub Tip <span class="title-inverted">#1</span>
+                            ### GitHub Tip <span class="title-inverted">#1</span>
 
-                            ### `t` File Finder
+                            #### `t` File Finder
 
                             ![](images/filefinder.png)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## GitHub Tip <span class="title-inverted">#2</span>
+                            ### GitHub Tip <span class="title-inverted">#2</span>
 
-                            ### `.patch`
+                            #### `.patch`
 
                             ``` http
                             https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
@@ -686,6 +707,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             ### Applying A Commit As A Patch
+                            <br>
 
                             ``` bash
                             curl https://github.com/your/repo/commit/<SHA>.patch |git am
@@ -810,13 +832,12 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                 </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        # GitLab
-                    </script>
-                </section>
-
                 <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # GitLab
+                        </script>
+                    </section>
                     <section data-markdown class="no-border">
                         <script type="text/template">
                             ### ![](images/gitlab.png)
@@ -855,13 +876,12 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 </section>
 
 
-                <section data-markdown>
-                    <script type="text/template">
-                        # Open Source
-                    </script>
-                </section>
-
                 <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Open Source
+                        </script>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             In production and development, Open Source as a development model promotes a **universal
@@ -1448,6 +1468,7 @@ details.
                     { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true },
                 ]
             });
         </script>

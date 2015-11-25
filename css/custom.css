@@ -23,6 +23,14 @@ img.no-border,
     background: none !important;
 }
 
+.img-bg-color img {
+    background-color: #000 !important;
+}
+
+.img-no-margin img {
+    margin: 0 !important;
+}
+
 .no-bullets li {
     list-style-type: none;
 }
