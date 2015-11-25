@@ -30,15 +30,72 @@
 
         <div class="reveal">
             <div class="slides">
+                <section data-markdown>
+                    <script type="text/template">
+                        * PR review = be nice /!\ communication
+                        * OSS models for work (Michelin)
+                        * Recap : communication + everyone can contribute
+                        * New screenshot GitHub
+                        * give, not take
+                    </script>
+                </section>
+
                 <section>
                     <h1 class="title">Git <span class="title-inverted">&</span> GitHub <span class="title-inverted">&</span> Open Source</h1>
                     <em>William Durand - November 19th, 2015</em>
                 </section>
 
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## <i class="fa fa-warning"></i> What this talk is <u>NOT</u> about?
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Free Software != Open Source
+
+                            <small>
+                                <i class="fa fa-link"></i> [Why Open Source misses the point of Free Software](https://www.gnu.org/philosophy/open-source-misses-the-point.html)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Git For Newcomers
+
+                            ![](images/learn-git.gif)
+
+                            <small>
+                                <i class="fa fa-link"></i> [https://try.github.io](https://try.github.io)
+                            </small>
+                        </script>
+                    </section>
+                </section>
+
                 <section data-markdown>
                     <script type="text/template">
-                    # <i class="title-inverted fa fa-git"></i>
-                </script>
+                        ## "Macro" Agenda
+
+                        <center>
+
+                        <br>
+                        1. Git
+                        <br>
+                        <br>
+                        2. Git(Hub|Lab)
+                        <br>
+                        <br>
+                        3. Open Source
+
+                        </center>
+                    </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        # <i class="title-inverted fa fa-git"></i>
+                    </script>
                 </section>
 
                 <section>
@@ -101,7 +158,20 @@
 
                             <br>
 
-                            `git pull --rebase=preserve`<br>`pull.rebase=preserve` (config)
+                            ```
+                            git pull --rebase <remote> <branch>
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Preserving existing merges
+
+                            <br>
+
+                            `git pull --rebase=preserve`
+                            <br>or<br>
+                            `pull.rebase=preserve` (config)
                         </script>
                     </section>
                 </section>
@@ -256,14 +326,16 @@
                             Quickly save current state:
 
                             ``` bash
-                            git stash
+                            git stash -u 'current state'
                             ```
 
-                            Restore it, later:
+                            <br>Restore it, later:
 
                             ``` bash
                             git stash apply
                             ```
+
+                            <small>Or `git stash pop` but I rarely use it...</small>
                         </script>
                     </section>
                     <section data-markdown>
@@ -373,6 +445,8 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             git checkout -
                             Switched to branch 'feat-undefined-variable'
                             ```
+
+                            <small>Also works with `merge`, `cherry-pick` and `rebase`.</small>
                         </script>
                     </section>
                     <section data-markdown>
