@@ -45,6 +45,7 @@ img.no-border,
     left: 20px;
     height: 90px;
     border: none !important;
+    z-index: 30;
 }
 
 .title-inverted {
