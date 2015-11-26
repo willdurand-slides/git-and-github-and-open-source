@@ -31,6 +31,10 @@ img.no-border,
     margin: 0 !important;
 }
 
+.white-color h3 {
+    color: #fff !important;
+}
+
 .no-bullets li {
     list-style-type: none;
 }
