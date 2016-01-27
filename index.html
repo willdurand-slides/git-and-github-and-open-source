@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>William Durand | Git & GitHub & Open Source</title>
+        <title>William Durand | Git & Open Source & Collaboration</title>
 
         <link rel="stylesheet" href="reveal.js/css/reveal.css">
         <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
@@ -26,15 +26,16 @@
         <![endif]-->
     </head>
     <body>
-        <img src="images/lavajug.png" id="logo" />
+        <img src="images/td.png" id="logo" />
 
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h1 class="title">Git <span class="title-inverted">&</span> GitHub <span class="title-inverted">&</span> Open Source</h1>
-                    <em>William Durand - November 26th, 2015</em>
+                    <h1 class="title">Git <span class="title-inverted">&</span> Open Source<br><span class="title-inverted">&</span> Collaboration</h1>
+                    <em>William Durand - January 28th, 2016 @ Michelin</em>
                 </section>
 
+                <!--
                 <section data-markdown>
                     <script type="text/template">
                         Hi! I'm [Will](https://twitter.com/couac), the author of this slide deck.
@@ -61,51 +62,26 @@
                         <i class="fa fa-link"></i> [https://speakerdeck.com/willdurand/2015](https://speakerdeck.com/willdurand/2015)
                     </script>
                 </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## <i class="fa fa-warning"></i> What is <u>NOT</u><br>this talk about?
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Free Software != Open Source
-
-                            <small>
-                                <i class="fa fa-link"></i> [Why Open Source misses the point of Free Software](https://www.gnu.org/philosophy/open-source-misses-the-point.html) (according to Richard Stallman)
-                            </small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Git For Newcomers
-
-                            ![](images/learn-git.gif)
-
-                            <small>
-                                <i class="fa fa-link"></i> [https://try.github.io](https://try.github.io)
-                            </small>
-                        </script>
-                    </section>
-                </section>
+                -->
 
                 <section data-markdown>
                     <script type="text/template">
-                        ## "Macro" Agenda
+                        DISCLAIMER: I am not working at GitHub.
+                    </script>
+                </section>
 
-                        <center>
+                <section data-markdown class="center-agenda">
+                    <script type="text/template">
+                        ## "Macro" Agenda
 
                         <br>
                         1. Git
                         <br>
+                        2. Git(Hub|Lab)
                         <br>
-                        2. Git(Hub|Lab) / Workflows
+                        3. Workflows
                         <br>
-                        <br>
-                        3. Open Source
-
-                        </center>
+                        4. Open Source
                     </script>
                 </section>
 
@@ -137,468 +113,10 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Git Tip <span class="title-inverted">#1</span>
+                            ### Git For Newcomers
 
                             <br>
-
-                            #### Local Cherry-Picking
-
-                            ``` bash
-                            git checkout <other-branch> -- /path/to/file
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Merge vs Rebase
-
-                            ![](images/merge_vs_rebase.png)
-
-                            <small>
-                                Credit: [http://surpreem.com/archives/1524](http://surpreem.com/archives/1524)
-                            </small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### No Fast Forward, Please.
-
-                            ![](images/no-ff.png)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `pull` = `fetch` + `merge`
-
-                            That's not what you want! No. Really.
-
-                            <br>
-
-                            ```
-                            git pull --rebase <remote> <branch>
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown class="img-bg-color img-no-margin">
-                        <script type="text/template">
-                            ### But, Rebase Kills Merges
-
-                            ![](images/pull-rebase-orig.png)
-
-                            ![](images/pull-rebase.png)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Preserving existing merges
-
-                            <br>
-
-                            `git pull --rebase=preserve`
-                            <br>or<br>
-                            `pull.rebase=preserve` (config)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Tadaaaam! <i class="fa fa-smile-o"></i>
-
-                            ![](images/pull-rebase-preserve.png)
-                        </script>
-                    </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Advanced Features
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Git Tip <span class="title-inverted">#2</span>
-
-                            <br>
-
-                            #### Autocorrection FTW
-
-                            ``` bash
-                            git config --global help.autocorrect 1
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git lol
-                            WARNING: You called a Git command named 'lol', which does not exist.
-                            Continuing under the assumption that you meant 'log'
-                            in 0.1 seconds automatically...
-                            commit 2feb149c8e76d12848f7535a8eb4d51b1c225776
-                            Author: William Durand <will+git@drnd.me>
-                            Date:   Mon Nov 16 14:54:53 2015 +0100
-
-                                add badges
-
-                            ...
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Git Tip <span class="title-inverted">#3</span>
-
-                            <br>
-
-                            #### Built-In Auto-Completion
-
-                            ``` bash
-                            git co<tab><tab>
-                            commit config
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `git archive`
-
-                            <br>
-
-                            ``` bash
-                            git archive --format zip -o snapshot.zip HEAD
-                            ```
-
-                            <br>
-                            "Export" all files from a given commit into a directory:
-
-                            ``` bash
-                            git archive --format tar --prefix myapp/ <commit> | (cd /tmp && tar xf -)
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### **Re**use **Re**corded **Re**solution
-
-                            ``` bash
-                            git config --global rerere.enabled true
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git merge master
-                            Auto-merging index.html
-                            CONFLICT (content): Merge conflict in index.html
-                            Recorded preimage for 'index.html'
-                            Automatic merge failed; fix conflicts and then commit the result.
-                            ```
-
-                            ``` bash
-                            git commit --no-edit
-                            Recorded resolution for 'index.html'
-                            [old-branch abcd123] Merge branch 'master' into old-branch
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git merge master
-                            Auto-merging index.html
-                            CONFLICT (content): Merge conflict in index.html
-                            Resolved 'index.html' using previous resolution.
-                            ```
-
-                            <small>
-                                <i class="fa fa-link"></i> [Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67)
-                            </small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### `git bisect`
-
-                            Performs a **binary search** across a range of commits
-                            <br>to help you find where an error was introduced:
-
-                            ``` bash
-                            git bisect start
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git bisect good abcd123
-                            ```
-
-                            ``` bash
-                            git bisect bad [badd123]
-                            ```
-
-                            <br>
-
-
-                            ``` bash
-                            # The script should end with a non-zero return status when it fails
-                            git bisect run mvn clean test
-                            ```
-                        </script>
-                    </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## (My) Useful<br>Git Commands
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Stash
-
-                            <br>
-
-                            Quickly save current state:
-
-                            ``` bash
-                            git stash -u 'current state'
-                            ```
-
-                            <br>Restore it, later:
-
-                            ``` bash
-                            git stash apply
-                            ```
-
-                            <small>Or `git stash pop` but I rarely use it...</small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Interactive Rebase
-
-                            ``` bash
-                            git rebase -i HEAD~<number of commits>
-                            ```
-
-                            ``` bash
-pick d1ed4e4 Fix typo
-pick b49cb42 Update for lavajug
-pick e35510f Add new images
-
-# Rebase 5f167bb..e35510f onto 5f167bb (3 command(s))
-#
-# Commands:
-# p, pick = use commit
-# r, reword = use commit, but edit the commit message
-# e, edit = use commit, but stop for amending
-# s, squash = use commit, but meld into previous commit
-# f, fixup = like "squash", but discard this commit's log message
-# x, exec = run command (the rest of the line) using shell
-#
-# These lines can be re-ordered; they are executed from top to bottom.
-#
-# If you remove a line here THAT COMMIT WILL BE LOST.
-#
-# However, if you remove everything, the rebase will be aborted.
-#
-# Note that empty commits are commented out
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Fast Pull & Rebase
-                            <br>
-
-                            ``` bash
-                            git pull --rebase origin master
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Atomic Commits
-
-                            ``` bash
-                            git add -p
-                            ```
-
-                            ``` diff
-diff --git a/test.js b/test.js
-index 60ac996..2a57310 100644
---- a/test.js
-+++ b/test.js
-@@ -1,6 +1,5 @@
- (function () {
--    var i, j;
-+    var i = 0, j;
-
--    i = 0;
--    j = i;
-+    j = 1;
- })();
-Stage this hunk [y,n,q,a,d,/,s,e,?]? s
-Split into 2 hunks.
-@@ -1,3 +1,3 @@
- (function () {
--    var i, j;
-+    var i = 0, j;
-
-Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Amending A Commit
-                            <br>
-
-                            ``` bash
-                            git commit --amend
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git commit --amend -m 'Fix undefined variable j
-
-                            Fix #123'
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Go Back
-                            <br>
-
-                            ``` bash
-                            git checkout -
-                            Switched to branch 'master'
-                            ```
-
-                            ``` bash
-                            git checkout -
-                            Switched to branch 'feat-undefined-variable'
-                            ```
-
-                            <small>Also works with `merge`, `cherry-pick` and `rebase`.</small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### (Un)Merged Branch
-                            <br>
-
-                            ``` bash
-                            git branch --no-merged
-                              develop
-                              feat-another-feature
-                              feat-my-feature
-                              fix-undefined-variable
-                            ```
-
-                            <br>
-
-                            ``` bash
-                            git branch --merged
-                            * master
-                            ```
-                        </script>
-                    </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Dealing With<br>PATCH <span class="title-inverted">&</span> DIFF
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Creating A Patch
-
-                            ```
-                            git format-patch master --stdout > fix-undefined-variable.patch
-                            ```
-
-                            ```
-                            From: William Durand <will+git@drnd.me>
-                            Date: Thu, 13 Nov 2015 10:22:17 +0100
-                            Subject: [PATCH] Fix undefined variable
-
-                            ---
-                             test.js | 2 +-
-                             1 file changed, 1 insertion(+), 1 deletion(-)
-
-                            diff --git a/test.js b/test.js
-                            index 760e4eb..60ac996 100644
-                            --- a/test.js
-                            +++ b/test.js
-                            @@ -1,5 +1,5 @@
-                             (function () {
-                            -    var i;
-                            +    var i, j;
-
-                            i = 0;
-                            j = i;
-                            --
-                            2.1.2
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Changes Overview
-                            <br>
-
-                            ```
-                            git apply --stat fix-undefined-variable.patch
-                            ```
-
-                            ```
-                             test.js |    2 +-
-                             1 file changed, 1 insertion(+), 1 deletion(-)
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Test The Patch
-                            <br>
-
-                            ```
-                            git apply --check fix-undefined-variable.patch
-                            ```
-
-                            <br>
-                            No output == <i class="fa fa-thumbs-o-up"></i>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Then, Apply
-                            <br>
-
-                            ``` bash
-                            git am --signoff < fix-undefined-variable.patch
-                            ```
-
-                            ``` bash
-                            Applying: Fix undefined variable
-                            ```
-
-                            ``` bash
-                            commit 4c20f8d517b99638f5379f3f0894ad076d2b6a5b
-                            Author: William Durand <will+git@drnd.me>
-                            Date:   Thu Nov 13 10:22:17 2015 +0100
-
-                                Fix undefined variable
-
-                                Signed-off-by: William Durand <will+git@drnd.me>
-                            ```
-
-                            <br>
-                            BTW, `patch -p1` works too!
+                            <i class="fa fa-link"></i> [try.github.io](https://try.github.io)
                         </script>
                     </section>
                 </section>
@@ -615,6 +133,13 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     <section data-markdown>
                         <script type="text/template">
                             GitHub is the largest code host on the planet<br>with over **29.5 million** repositories.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Social Coding
+
+                            ![](images/ghprofile.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -659,21 +184,11 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                             **P**ull **R**equest = Code + Issue + Code Comments
                         </script>
                     </section>
-                    <section>
-                        <h3>GitHub Pages</h3>
-
-                        <img src="images/pages.png" class="no-border" />
-                    </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### GitHub Pages
+                            ### Compare View
 
-                            * [Jekyll](http://jekyllrb.com/)-friendly
-                            * Custom URLs
-                            * Built-in layouts
-
-                            <br>
-                            Also, checkout [5minfork.com](http://5minfork.com/)!
+                            ![](images/compare.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -685,9 +200,23 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Compare View
+                            ### Team Management
 
-                            ![](images/compare.png)
+                            ![](images/teams.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Outside Collaborators
+
+                            ![](images/collab_outside.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Per Project Collaborators
+
+                            ![](images/collab_project.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -699,145 +228,16 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### GitHub Tip <span class="title-inverted">#1</span>
+                            ### Deployment Management
 
-                            #### `t` File Finder
-
-                            ![](images/filefinder.png)
+                            ![](images/deployment.png)
                         </script>
                     </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### GitHub Tip <span class="title-inverted">#2</span>
-
-                            #### `.patch`
-
-                            ``` http
-                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.patch
-                            ```
-
-                            ![](images/patch.png)
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Applying A Commit As A Patch
-                            <br>
-
-                            ``` bash
-                            curl https://github.com/your/repo/commit/<SHA>.patch |git am
-                            Applying: Fix undefined variable
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Also, `.diff`
-
-                            ``` http
-                            https://github.com/your/repo/commit/e0af340837978f80d8cd144a4475.diff
-                            ```
-
-                            ![](images/diff.png)
-                        </script>
-                    </section>
-                </section>
-
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## `hub`
 
-                            git + hub = github
-
-                            <br>
-                            `alias git=hub`
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Clone
-
-                            ``` bash
-                            git clone random/repo
-                            # git clone git://github.com/random/repo.git
-                            ```
-
-                            ``` bash
-                            git clone repo
-                            # git clone git://github.com/YOUR/repo.git
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Browse
-
-                            ``` bash
-                            git browse
-                            # open https://github.com/random/repo
-                            ```
-
-                            ``` bash
-                            git browse -- issues
-                            # open https://github.com/random/repo/issues
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Easy Fetch
-
-                            ``` bash
-                            git fetch ubermuda
-                            # git remote add ubermuda git://github.com/ubermuda/repo.git
-                            # git fetch ubermuda
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Checkout <i class="fa fa-heart"></i>
-
-                            ``` bash
-                            git checkout https://github.com/your/repo/pull/123
-                            # git remote add contributor git://github.com/contributor/repo.git
-                            # git fetch contributor
-                            # git checkout -b contributor-branch contributor/branch
-                            ```
-
-                            <br>
-                            Best way to [work on|review|test] a Pull Request so far!
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Apply Commits
-
-                            ``` bash
-                            git am -3 https://github.com/your/repo/pull/123
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Cherry-Pick
-
-                            ``` bash
-                            git cherry-pick https://github.com/random/repo/commit/SHA
-                            # git remote random git://github.com/random/repo.git
-                            # git fetch random
-                            # git cherry-pick SHA
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### More!
-
-                            ``` bash
-                            git fork, git pull-request, merge, ci-status, etc.
-                            ```
+                            git + hub = github \o/
 
                             <br>
                             <small>
@@ -850,7 +250,9 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## GitLab
+                            # GitLab
+
+                            (quickly)
                         </script>
                     </section>
                     <section data-markdown class="no-border">
@@ -893,17 +295,36 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Workflows
+                            # Workflows
+
+                            a.k.a. **collaboration patterns**
                         </script>
                     </section>
-                    <section data-markdown>
+                    <section data-markdown class="no-border">
                         <script type="text/template">
-                            ### Common Workflows
-                            <br>
+                            ### Centralized
 
-                            * **Centralized** workflow (with a shared repository)
-                            * **Blessed** repository (with a release manager)
-                            * **Lieutenant** workflow (blessed repo. + trusted lieutenants and a dictator)
+                            Shared repository (subversion-style)
+
+                            ![](images/centralized.png)
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ### Release (or Integration) Manager
+
+                            **Blessed** repository + a **release manager**
+
+                            ![](images/blessed.png)
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ### Dictator and Lieutenants
+
+                            Blessed repository + **trusted lieutenants** and a **dictator**
+
+                            ![](images/dictator.png)
                         </script>
                     </section>
                     <section data-markdown>
@@ -916,6 +337,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
                                 <br>
                                 Well... Maybe not.
                                 See [this simple<br>git branching model](https://gist.github.com/jbenet/ee6c9ac48068889b0912) instead.
+                                <br>![](images/z-git-branching.jpg)
                             </p>
                         </script>
                     </section>
@@ -1300,16 +722,6 @@ details.
                             ### <i class="fa fa-link"></i> <a href="http://contributor-covenant.org/"> <span class="title-inverted">contributor-covenant.org</span></a>
                         </script>
                     </section>
-                     <section data-markdown data-background="images/badges.png">
-                         <script type="text/template">
-                             ### Badges!
-                         </script>
-                     </section>
-                     <section data-markdown>
-                         <script type="text/template">
-                             ### <i class="fa fa-link"></i> [shields.io](http://shields.io/)
-                         </script>
-                     </section>
                      <section data-markdown>
                          <script type="text/template">
                              ### Write Tests & Automate
@@ -1319,15 +731,6 @@ details.
                          <script type="text/template">
                              ### Be Standard
                          </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### You Need Feedback!
-
-                            * Twitter
-                            * Hacker News
-                            * Your team
-                        </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
@@ -1341,7 +744,7 @@ details.
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Communication is the key!
+                            ### Communication is key!
 
                             ![](images/issue-labels.png)
                         </script>
@@ -1351,54 +754,9 @@ details.
                             ### Hire People
                         </script>
                     </section>
-                </section>
-
-                <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Dealing With Releases
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Semantic Versioning
-
-                            `MAJOR.MINOR.PATCH`
-
-                            <br>
-                            <small>
-                                <i class="fa fa-link"></i> [semver.org](http://semver.org/)
-                            </small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Changelog
-
-                            A change log is a file which contains a curated,
-                            ordered list of notable changes for each version of
-                            a project.
-
-                            <br>
-                            <small>
-                                <i class="fa fa-link"></i> [keepachangelog.com](http://keepachangelog.com/)
-                            </small>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Release Process
-
-                            1. Run test suite(s)
-                            1. Update documentation, changelog, version
-                            1. `git commit -m "Prepare X.Y.Z release"`
-                            1. `git tag` **`v`**`X.Y.Z`
-                            1. Build artifact (`gem build`, etc.)
-                            1. Update version number (`Z++`)
-                            1. `git commit -m "Bump version to X.Y.Z+1-dev"`
-                            1. `git push origin master --tags`
-                            1. Publish artifact (`gem push`, etc.)
-                            1. Publish a GitHub release
+                            All of this can be applied to your "internal" projects too <i class="fa fa-smile-o"></i>
                         </script>
                     </section>
                 </section>
@@ -1406,7 +764,121 @@ details.
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Dealing With<br>Everything Else
+                            ## One More Thing
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Open Source is more than<br>making code available for free.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            It is a lot of work!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Care about the people first.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Communication is essential!
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Everyone can contribute!
+
+                            <i class="fa fa-link"></i> [Your First PR](https://yourfirstpr.github.io/)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Open Source is more than<br>downloading code available for free.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Give, don't (only) take.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            There are people behind Open Source projects.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            Money is still an issue in OSS...
+
+                            <small>
+                                <i class="fa fa-link"></i> [https://coderanger.net/funding-foss/](https://coderanger.net/funding-foss/)
+                            </small>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ...which is not the case in a company.
+                        </script>
+                    </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Thank You.
+
+                        ### Questions?
+                        <br>
+                        <br>
+                        <br>
+                        <ul class="me">
+                            <li>
+                                <p><i class="fa fa-globe"></i><a href="http://williamdurand.fr" title="website">williamdurand.fr</a></p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-github"></i><a href="https://github.com/willdurand" title="github">github.com/willdurand</a></p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-twitter"></i><a href="https://twitter.com/couac" title="twitter">twitter.com/couac</a></p>
+                            </li>
+                            <li>
+                                <p> <i class="fa fa-briefcase"></i> [TailorDev SAS](http://tailordev.fr)</p>
+                            </li>
+                        </ul>
+                    </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Links
+
+                        <small>
+
+                        * http://williamdurand.fr/2013/07/04/on-open-sourcing-libraries/
+                        * http://williamdurand.fr/2013/11/20/on-creating-pull-requests/
+                        * http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
+                        * http://git-scm.com/book/en/v2/Git-Branching-Rebasing
+                        * http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+                        * https://github.com/blog/1530-choosing-an-open-source-license
+                        * https://help.github.com/articles/open-source-licensing/
+                        * http://www.codinghorror.com/blog/2007/04/pick-a-license-any-license.html
+                        * https://medium.com/code-zen/how-to-maintain-a-successful-open-source-project-aaa2a5437d3a
+                        * http://ryanbigg.com/2015/11/open-source-work/
+                        * https://robots.thoughtbot.com/git-bisect
+                        * https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git
+                        * https://git-scm.com/docs/git-archive
+                        * http://writing.jan.io/2015/11/20/sustainable-open-source.html
+
+                        </small>
+                    </script>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Maintainer's Life
                         </script>
                     </section>
                     <section data-markdown>
@@ -1510,114 +982,6 @@ details.
                             ### ![](images/gifts-es.png)
                         </script>
                     </section>
-                </section>
-
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Let's sum up
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Open Source is more than<br>making code available for free.
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            It is a lot of work!
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Care about the people first.
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Communication is essential!
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Everyone can contribute!
-
-                            <i class="fa fa-link"></i> [Your First PR](https://yourfirstpr.github.io/)
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="text/template">
-                            Open Source is more than<br>downloading code available for free.
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Give, don't (only) take.
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            There are people behind Open Source projects.
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Money is still an issue in OSS.
-
-                            <small>
-                                <i class="fa fa-link"></i> [https://coderanger.net/funding-foss/](https://coderanger.net/funding-foss/)
-                            </small>
-                        </script>
-                    </section>
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Thank You.
-
-                        ### Questions?
-
-                        <br>
-                        <br>
-                        <br>
-                        <ul class="me">
-                            <li>
-                                <p><i class="fa fa-globe"></i><a href="http://williamdurand.fr" title="website">williamdurand.fr</a></p>
-                            </li>
-                            <li>
-                                <p><i class="fa fa-github"></i><a href="https://github.com/willdurand" title="github">github.com/willdurand</a></p>
-                            </li>
-                            <li>
-                                <p><i class="fa fa-twitter"></i><a href="https://twitter.com/couac" title="twitter">twitter.com/couac</a></p>
-                            </li>
-                        </ul>
-                    </script>
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Links
-
-                        <small>
-
-                        * http://williamdurand.fr/2013/07/04/on-open-sourcing-libraries/
-                        * http://williamdurand.fr/2013/11/20/on-creating-pull-requests/
-                        * http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
-                        * http://git-scm.com/book/en/v2/Git-Branching-Rebasing
-                        * http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-                        * https://github.com/blog/1530-choosing-an-open-source-license
-                        * https://help.github.com/articles/open-source-licensing/
-                        * http://www.codinghorror.com/blog/2007/04/pick-a-license-any-license.html
-                        * https://medium.com/code-zen/how-to-maintain-a-successful-open-source-project-aaa2a5437d3a
-                        * http://ryanbigg.com/2015/11/open-source-work/
-                        * https://robots.thoughtbot.com/git-bisect
-                        * https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git
-                        * https://git-scm.com/docs/git-archive
-                        * http://writing.jan.io/2015/11/20/sustainable-open-source.html
-
-                        </small>
-                    </script>
                 </section>
             </div>
         </div>

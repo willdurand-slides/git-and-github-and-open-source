@@ -1,3 +1,7 @@
+h1.title {
+    font-size: 2.5em;
+}
+
 .me {
     margin: 0 !important;
     text-align: center !important;
@@ -66,5 +70,5 @@ img.no-border,
 }
 
 .reveal ol {
-    width: 100% !important;
+    width: 50% !important;
 }
